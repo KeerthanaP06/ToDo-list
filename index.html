@@ -1,0 +1,52 @@
+<fieldset id="todo-fieldset">
+<legend>TO DO LIST:</legend>
+<input id="one">
+<button onclick="add()">Add Work</button> <!--when add function is called, content in input box added to ul as li-->
+<ul id="list-box">
+    <li>Water plants <button onclick="del(event)"> Done</button></li>
+</ul>
+</fieldset>
+
+<style>
+    body {
+    background-image: url('https://i.pinimg.com/736x/04/97/4d/04974da100095420a41758d35ea53c28.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo-fieldset {
+  
+   margin-right:650px;
+    margin-top: 40px;
+    padding: 40px;
+    padding-top: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white background */
+}
+
+</style>
+<script>
+     var l=document.getElementById("list-box")
+
+    function add()
+    {
+    var list=document.createElement("li") // creating element li (we need to add li in ul)
+    var input_val=document.getElementById("one")
+    //list.textContent=input_val.value ->this line will only add li,but we need button along with that
+    //list.textContent=input_val.value+"<button>DELETE<button>" ->this will add <button>DElete<button> as a string
+    list.innerHTML=input_val.value+"<button onclick='del(event)'>Done</button>"
+    l.append(list)
+    }
+
+    function del(event){
+        //li.event.remove() ->will remove delete button
+       event.target.parentElement.remove() //this will select total list and remove
+    }
+
+</script>
